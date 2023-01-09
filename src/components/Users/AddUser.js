@@ -7,7 +7,6 @@ import classes from "./AddUser.module.css";
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
-  const [users, setUsers] = useState([]);
 
   const addUserHandler = (event) => {
     event.preventDefault();
@@ -22,13 +21,10 @@ const AddUser = (props) => {
       username: enteredUsername,
       age: enteredAge,
       id: Math.random().toString(),
-      key: Math.random().toString(),
     };
 
-    setUsers((prevUsers) => {
-      return [...prevUsers, newUser];
-    });
-    console.log(users);
+    props.setUser(newUser);
+
     setEnteredUsername("");
     setEnteredAge("");
   };
